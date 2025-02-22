@@ -1,6 +1,6 @@
 import User from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
-
+import { errorHandler } from "../utils/error.js";
 
 const isValidUsername = (username) => {
   const usernameRegex = /^[a-zA-Z0-9@#_]+$/;
@@ -12,7 +12,7 @@ const isValidEmail = (email) => {
   return emailRegex.test(email);
 };
 
-export const signup = async (req, res) => {
+export const signup = async (req, res, next) => {
   const { username, email, password } = req.body;
 
   if (
@@ -61,7 +61,7 @@ export const signup = async (req, res) => {
     const newUser = new User({
       username,
       email,
-      password : hashedPassword,
+      password: hashedPassword,
     });
 
     await newUser.save();
@@ -69,8 +69,8 @@ export const signup = async (req, res) => {
     return res.status(201).json({ message: "User signed up successfully!" });
   } catch (error) {
     console.error(error);
-    return res
-      .status(500)
-      .json({ message: "Something went wrong, please try again." });
+    next(error);
   }
 };
+
+export const signin = async (req, res) => {};
