@@ -107,22 +107,42 @@ const Header = () => {
                   />
                 </form>
                 <Sidebar.Items>
-                  <Sidebar.ItemGroup>
-                    <Button className="w-full" color="">
-                      <Link to={`/`}>Home</Link>
-                    </Button>
-                    <Button className="w-full" color="">
-                      <Link to={`/`}>About</Link>
-                    </Button>
-                    <Button className="w-full" color="">
-                      <Link to={`/`}>Dashboard</Link>
-                    </Button>
-                    <Button className="w-full bg-slate-200 text-black">
-                      <Link to={`/`}>Sign Up</Link>
-                    </Button>
-                    <Button className="w-full bg-green-500 border text-white">
-                      <Link to={`/`}>Sign In</Link>
-                    </Button>
+                  <Sidebar.ItemGroup className="flex flex-col">
+                    <Link to="/" onClick={() => setIsOpen(false)}>
+                      <Button className="w-full hover:bg-slate-100" color="">
+                        Home
+                      </Button>
+                    </Link>
+
+                    <Link to="/about" onClick={() => setIsOpen(false)}>
+                      <Button className="w-full hover:bg-slate-100" color="">
+                        About
+                      </Button>
+                    </Link>
+
+                    <Link to="/projects" onClick={() => setIsOpen(false)}>
+                      <Button className="w-full hover:bg-slate-100" color="">
+                        Projects
+                      </Button>
+                    </Link>
+
+                    <Link to="/dashboard" onClick={() => setIsOpen(false)}>
+                      <Button className="w-full hover:bg-slate-100" color="">
+                        Dashboard
+                      </Button>
+                    </Link>
+
+                    <Link to="/sign-up" onClick={() => setIsOpen(false)}>
+                      <Button className="w-full bg-slate-400 text-white hover:bg-slate-400">
+                        Sign Up
+                      </Button>
+                    </Link>
+
+                    <Link to="/sign-in" onClick={() => setIsOpen(false)}>
+                      <Button className="w-full bg-green-500 text-white hover:bg-green-600">
+                        Sign In
+                      </Button>
+                    </Link>
                   </Sidebar.ItemGroup>
 
                   <Sidebar.ItemGroup>
