@@ -2,6 +2,8 @@ import { Button, Drawer, Navbar, Sidebar, TextInput } from "flowbite-react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, Moon, Search } from "lucide-react";
 import { useState } from "react";
+import PrimaryButton from "@/components/PrimaryButton";
+import SecondaryButton from "@/components/SecondaryButton";
 
 const Header = () => {
   const currentPath = useLocation().pathname;
@@ -75,9 +77,9 @@ const Header = () => {
           <Moon className="w-4" />
         </Button>
         <Link to={`/sign-in`}>
-          <Button className="bg-green-500 border text-white hidden lg:inline">
+          <PrimaryButton className="bg-green-500 text-white hidden lg:inline">
             Sign In
-          </Button>
+          </PrimaryButton>
         </Link>
         <Button
           size="xs"
@@ -133,15 +135,13 @@ const Header = () => {
                     </Link>
 
                     <Link to="/sign-up" onClick={() => setIsOpen(false)}>
-                      <Button className="w-full bg-slate-400 text-white hover:bg-slate-400">
+                      <SecondaryButton className="w-full">
                         Sign Up
-                      </Button>
+                      </SecondaryButton>
                     </Link>
 
                     <Link to="/sign-in" onClick={() => setIsOpen(false)}>
-                      <Button className="w-full bg-green-500 text-white hover:bg-green-600">
-                        Sign In
-                      </Button>
+                      <PrimaryButton className="w-full">Sign In</PrimaryButton>
                     </Link>
                   </Sidebar.ItemGroup>
 
