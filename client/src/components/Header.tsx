@@ -15,8 +15,7 @@ const Header = () => {
           to={`/`}
           className={`flex items-end self-center whitespace-nowrap font-bold text-lg sm:text-xl dark:text-white`}
         >
-          <img src="/logo.svg" alt="logo" className="w-10" />{" "}
-          <span className={`text-green-500`}>Dead</span>lock Labs Blog
+          <img src="/icon.svg" alt="logo" className="w-12 lg:w-16" />{" "}
         </Link>
       </div>
 
@@ -75,9 +74,11 @@ const Header = () => {
         <Button className="hidden lg:inline" size="sm" color="gray">
           <Moon className="w-4" />
         </Button>
-        <Button className="bg-green-500 border text-white hidden lg:inline">
-          <Link to={`/sign-in`}>Sign In</Link>
-        </Button>
+        <Link to={`/sign-in`}>
+          <Button className="bg-green-500 border text-white hidden lg:inline">
+            Sign In
+          </Button>
+        </Link>
         <Button
           size="xs"
           color=""
