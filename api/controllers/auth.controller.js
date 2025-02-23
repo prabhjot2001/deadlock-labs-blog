@@ -125,12 +125,12 @@ export const signin = async (req, res) => {
 
     const { password: pass, ...rest } = user._doc;
 
-    res.status(400).cookie("access_token", token, { httpOnly: true }).json({
+    res.status(200).cookie("access_token", token, { httpOnly: true }).json({
       success: true,
       message: "User signed up successfully!",
       userInfo: rest,
     });
   } catch (error) {
-    console.log("Error ");
+    console.log("Error", error);
   }
 };
