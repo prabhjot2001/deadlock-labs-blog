@@ -4,7 +4,7 @@ import { Alert, Label, Spinner, TextInput } from "flowbite-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Info } from "lucide-react";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 
 const SignIn = () => {
   const [formData, setFormData] = useState({
