@@ -23,37 +23,46 @@ export const signup = async (req, res, next) => {
     email === "" ||
     password === ""
   ) {
-    return res.status(400).json({ message: "All fields are required" });
+    return res
+      .status(400)
+      .json({ success: false, message: "All fields are required" });
   }
 
   if (password.length < 6) {
-    return res
-      .status(400)
-      .json({ message: "Password must be at least 6 characters long" });
+    return res.status(400).json({
+      success: false,
+      message: "Password must be at least 6 characters long",
+    });
   }
 
   if (!isValidUsername(username)) {
     return res.status(400).json({
+      success: false,
       message:
         "Username can only contain alphanumeric characters and symbols: @, #, _, .",
     });
   }
 
   if (!isValidEmail(email)) {
-    return res.status(400).json({ message: "Invalid email format" });
+    return res
+      .status(400)
+      .json({ success: false, message: "Invalid email format" });
   }
 
   try {
     const isEmailExists = await User.findOne({ email });
     if (isEmailExists) {
-      return res
-        .status(409)
-        .json({ message: "User with this email already exists" });
+      return res.status(409).json({
+        success: false,
+        message: "User with this email already exists",
+      });
     }
 
     const isUsernameExists = await User.findOne({ username });
     if (isUsernameExists) {
-      return res.status(409).json({ message: "Username already taken" });
+      return res
+        .status(409)
+        .json({ success: false, message: "Username already taken" });
     }
 
     const hashedPassword = await bcryptjs.hashSync(password, 10);
@@ -66,7 +75,9 @@ export const signup = async (req, res, next) => {
 
     await newUser.save();
 
-    return res.status(201).json({ message: "User signed up successfully!" });
+    return res
+      .status(201)
+      .json({ success: true, message: "User signed up successfully!" });
   } catch (error) {
     console.error(error);
     next(error);
